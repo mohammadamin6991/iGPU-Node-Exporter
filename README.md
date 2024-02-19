@@ -1,4 +1,4 @@
-# iGPU-Node-Exporter
+gra# iGPU-Node-Exporter
 A Python based node, exporting Intel iGPU data for Prometheus.
 
 This has been made & tested on a Intel Xeon E3-1275v6 CPU.
@@ -8,7 +8,7 @@ This has been made & tested on a Intel Xeon E3-1275v6 CPU.
 ### Apt packages
  - python3
  - python3-pip
- - intel_gpu_tools
+ - intel_gpu_too
 
 ### Pip packages
  - prometheus_client
@@ -20,11 +20,16 @@ Syntax: `python3 script.py port http_service_metric_point`
 
 Real use case example: `python3 igpu_exporter.py 9101 http://localhost:9101/metrics`
 
-1. Try the script with the example above
-2. Add the service file to `/etc/systemd/system/`
-3. Test the service with `systemctl daemon-reload && systemctl start igpu_exporter.service`
-4. Check the status with `systemctl status igpu_exporter.service`
-5. Add the service to run at boot with `systemctl enable igpu_exporter.service`
+1. Install python3-venv and create a virtual environment for this porject `python3 -m venv /path/to/venv`
+2. Install requierd packages into this env
+   ```shell
+   source /path/to/venv/bin/activate
+   pip instal prometheus_client
+   ```
+3. Add the service file to `/etc/systemd/system/`. change value of the variable to meet your needs
+4. Test the service with `systemctl daemon-reload && systemctl start igpu_exporter.service`
+5. Check the status with `systemctl status igpu_exporter.service`
+6. Add the service to run at boot with `systemctl enable igpu_exporter.service`
 
 #### Metric End Point data
 ```
